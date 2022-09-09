@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project implements API to create and authenticate users.
 
-Things you may want to cover:
+* Creating a new user
+```
+POST api/v1/registrations
 
-* Ruby version
+{
+    "user": {
+        "username": "Test user",
+        "password": "123",
+        "password_confirmation": "123"
+    }
+}
 
-* System dependencies
+```
 
-* Configuration
+* Log in an user
+```
+POST api/v1/sessions
 
-* Database creation
+{
+    "username": "Test user",
+    "password": "123"   
+}
 
-* Database initialization
+```
 
-* How to run the test suite
+* All the user data are persisted on Redis.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* To boot up Redis, use this command `docker compose up`
