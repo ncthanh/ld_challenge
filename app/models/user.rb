@@ -8,4 +8,6 @@ class User
   attr_accessor :username, :password_digest, :password_confirmation
 
   validates :username, presence: true, unique: true
+
+  identifier_attribute :username
 end

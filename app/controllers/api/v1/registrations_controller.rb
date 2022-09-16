@@ -1,10 +1,12 @@
 module Api
   module V1
     class RegistrationsController < Api::BaseController
+      skip_before_action :ensure_authorized
+
       def create
         user = User.new(user_params)
         if user.save
-          render json: { message: "Success" }, status: :created
+          render json: { message: "success" }, status: :created
         else
           render json: { errors: user.errors }, status: :ok
         end

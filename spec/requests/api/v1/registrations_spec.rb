@@ -6,7 +6,7 @@ RSpec.describe "Api::V1::Registrations", type: :request do
       post api_v1_registrations_path, params: { user: { username: "User1_#{Time.now.to_i}", password: "password!", password_confirmation: "password!" } }
       expect(response).to have_http_status(:created)
       json = JSON.parse(response.body)
-      expect(json).to eq("message" => "Success")
+      expect(json).to eq("message" => "success")
     end
 
     it "returns an error when password_confirmation doesn't match" do
@@ -20,7 +20,7 @@ RSpec.describe "Api::V1::Registrations", type: :request do
       post api_v1_registrations_path, params: { user: { username: "User_#{Time.now.to_i}", password: "password!", password_confirmation: "password!" } }
       expect(response).to have_http_status(:created)
       json = JSON.parse(response.body)
-      expect(json).to eq("message" => "Success")
+      expect(json).to eq("message" => "success")
 
       post api_v1_registrations_path, params: { user: { username: "User_#{Time.now.to_i}", password: "password!", password_confirmation: "password!" } }
       expect(response).to have_http_status(:ok)
